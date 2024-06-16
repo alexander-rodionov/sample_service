@@ -45,11 +45,11 @@ class CurrencyAPI(ApiHandlerABC):
         return json_response({"result": result})
 
     @ApiHandlerABC.api(APIMethods.GET, f'{_API_PREFIX}/rates/list')
-    def get_currencies(self, request):
-        print(request)
+    def get_list(self, request):
+        return json_response({})
 
 
     @ApiHandlerABC.api(APIMethods.GET, f'{_API_PREFIX}/heartbeat')
-    def get_currencies(self, request):
-        print(request)
+    def get_heartbeat(self, request):
+        return json_response({})
 

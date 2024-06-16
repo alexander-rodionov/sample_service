@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from itertools import product
 from datetime import datetime
 from typing import Dict, Optional, Type, List
-from .. import LoggerABC
+from ..abc import LoggerABC
 from ..misc import LazyValue
 
 from aiohttp import TCPConnector, ClientSession

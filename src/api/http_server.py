@@ -8,18 +8,21 @@ from .api_handler import ApiHandlerABC
 LONG_SLEEP_TIME = 3600
 
 class HttpServerModule(ModuleABC):
-    def __init__(self, exchange: ServiceExchangeABC, log: LoggerABC, handlers: List[Type[ApiHandlerABC]], host, port):
+    def __init__(self, exchange: ServiceExchangeABC, log: LoggerABC, handler_tyes: List[Type[ApiHandlerABC]], host, port):
         self.exchange = exchange
         self.log = log
         self.app: Optional[Application] = None
         self.site = None
         self.host = host
         self.port = port
-        self.handlers = [h(self.app) for h in handlers]
+        self.handler_types = handler_tyes
+        self.handlers = None
+
 
     async def start(self):
         self.log.info(self, 'Starting HTTP server')
         self.app = Application()
+        self.handlers = [h(self.app, self.exchange) for h in self.handler_types]
 
     def stop(self):
         self.log.info(self, 'Stopping HTTP server')
@@ -27,10 +30,9 @@ class HttpServerModule(ModuleABC):
     async def run(self):
         runner = AppRunner(self.app)
         await runner.setup()
-        self.site = TCPSite(runner, host=self.host, port=self.port)
+        self.site = TCPSite(runner, host=self.host(), port=self.port())
         await self.site.start()
         self.log.info(self, 'HTTP server started')
-        await self.site.start()
 
         while True:
             await sleep(LONG_SLEEP_TIME)

@@ -9,7 +9,7 @@ GET /api/rates?from=USD&to=RUB&value=1
 '''
 from asyncio import Queue
 
-from .. import ModuleABC, LoggerABC
+from ..abc import ModuleABC, LoggerABC
 from .data_loader import CachedDataLoader
 
 
