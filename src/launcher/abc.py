@@ -7,7 +7,7 @@ class ModuleABC(ABC):
         ...
 
     @abstractmethod
-    async def stop(self):
+    def stop(self):
         ...
 
     @abstractmethod

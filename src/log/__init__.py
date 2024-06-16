@@ -1,1 +1,1 @@
-from .logger import LoggerModule
+from .logger import LoggerModule, LoggerABC

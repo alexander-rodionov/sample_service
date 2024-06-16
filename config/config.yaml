@@ -1,1 +1,13 @@
-workfolder: /tmp
+logger:
+  loglevel: INFO
+  rotating_size_bytes: 1000000
+  backup_count: 5
+  workfolder: /tmp
+
+data_provider:
+  cache_ttl: 3600
+  dump_file: ./cache/cross_rates.json
+
+http:
+  host: 0.0.0.0
+  port: 80
