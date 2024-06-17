@@ -1,18 +1,26 @@
-from src import LoggerModule, ConfigModule, Launcher, HttpServerModule, ServiceExchange, DataProviderModule, CurrencyAPI
-
+from src import LoggerModule, ConfigModule, Launcher, HttpServerModule, ServiceExchangeModule, DataProviderModule, \
+    CurrencyAPI
 
 config = ConfigModule()
 logger = LoggerModule(
     workfolder=config.lazy('logger.workfolder'),
     loglevel=config.lazy('logger.loglevel'),
     rotating_size_bytes=config.lazy('logger.rotating_size_bytes'),
-    backup_count=config.lazy('logger.backup_count')
+    backup_count=config.lazy('logger.backup_count'),
+    config=config
 )
-exchange = ServiceExchange(logger)
-http_server = HttpServerModule(exchange, logger, [CurrencyAPI], config.lazy('http.host'), config.lazy('http.port'))
+exchange = ServiceExchangeModule(logger)
+http_server = HttpServerModule(
+    exchange=exchange,
+    log=logger,
+    handler_types=[CurrencyAPI],
+    host=config.lazy('http.host'),
+    port=config.lazy('http.port')
+)
 data_provider = DataProviderModule(
-    config.lazy('data_provider.api_key'),
     logger,
+    exchange,
+    config.lazy('data_provider.api_key'),
     config.lazy('data_provider.cache_ttl'),
     config.lazy('data_provider.dump_file')
 )
@@ -20,9 +28,7 @@ data_provider = DataProviderModule(
 Launcher([
     config,
     logger,
+    exchange,
     data_provider,
     http_server
 ]).run()
-
-
-

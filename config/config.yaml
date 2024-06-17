@@ -2,7 +2,7 @@ logger:
   loglevel: INFO
   rotating_size_bytes: 1000000
   backup_count: 5
-  workfolder: /tmp
+  workfolder: ./logs
 
 data_provider:
   cache_ttl: 3600

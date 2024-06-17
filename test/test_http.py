@@ -45,7 +45,7 @@ def _get(path, params):
     port = config['http']['port']
     yield requests.get(f'http://{host}:{port}{_API_PREFIX}/{path}', params=params)
 
-def test_http():
+def test_heartbeat():
     with _get('heartbeat', {}) as r:
         assert r.status_code == 200
 
@@ -58,7 +58,7 @@ def test_correct_currency():
     with _get('rates', {'from': 'USD', 'to': 'RUB', 'value': 1}) as r:
         assert r.status_code == 200
         body = r.json()
-        assert pydantic_check(RatesList, body)
+        assert pydantic_check(RateResponse, body)
         assert 70 < body['result'] < 200
 
 

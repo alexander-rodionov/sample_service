@@ -13,6 +13,7 @@ DEFAULT_LOG_LEVEL = INFO
 DEFAULT_LOG_SIZE = 10 ** 4
 DEFAULT_LOG_COUNT = 10
 
+
 class LoggerABC:
     @abstractmethod
     def debug(self, source, *args):
@@ -37,7 +38,8 @@ class LoggerModule(ModuleABC, LoggerABC):
     def __init__(self, workfolder: LazyValue = LazyValue(DEFAULT_LOG_DIR),
                  loglevel: LazyValue = LazyValue(DEFAULT_LOG_LEVEL),
                  rotating_size_bytes: LazyValue = LazyValue(DEFAULT_LOG_SIZE),
-                 backup_count: LazyValue = LazyValue(DEFAULT_LOG_COUNT)):
+                 backup_count: LazyValue = LazyValue(DEFAULT_LOG_COUNT),
+                 config=None):
         """
         Инициализирует логгер и создает обработчики для консольного и файлового логгера с ротацией
 
@@ -58,8 +60,9 @@ class LoggerModule(ModuleABC, LoggerABC):
         self.rotating_size_bytes = rotating_size_bytes
         self.backup_count = backup_count
         self.logger: Optional[Logger] = None
+        self.config = config
 
-    async def start(self):
+    async def start(self) -> None:
         log_levels = {
             'DEBUG': DEBUG,
             'INFO': INFO,
@@ -69,7 +72,7 @@ class LoggerModule(ModuleABC, LoggerABC):
         }
         int_log_level = log_levels[self.loglevel()]
 
-        self.logger: Logger = Logger('main_logger')
+        self.logger = Logger('main_logger')
         self.logger.setLevel(int_log_level)
         console_handler = StreamHandler()
         console_handler.setFormatter(Formatter(LOG_FORMAT))
@@ -82,33 +85,47 @@ class LoggerModule(ModuleABC, LoggerABC):
         file_logger.setLevel(self.loglevel())
         file_logger.setFormatter(Formatter(LOG_FORMAT))
         self.logger.addHandler(file_logger)
+        self.welcome()
         self.info(self, 'Logger started')
 
-    def stop(self):
+    @property
+    def _welcome_log_message(self) -> str:
+        m = '\n' + '-' * 80 + '\n'
+        m += 'Starting currency converter service with config:\n'
+        m += self.config.dump + '\n'
+        m += '-' * 80
+        return m
+
+    def stop(self) -> None:
         assert self.logger
+        self.info(self, 'Logger stopped')
         h: Handler
         for h in self.logger.handlers:
             h.flush()
 
-    async def run(self):
+    async def run(self) -> None:
         ...
 
     @staticmethod
-    def _call_with_args(method, *args):
+    def _call_with_args(method, *args) -> None:
         method(' '.join([str(x) for x in args]).replace('\t', ' '))
 
-    def debug(self, source, *args):
+    def debug(self, source, *args) -> None:
         assert self.logger
         self._call_with_args(self.logger.debug, source.__class__.__name__ if source else 'UnknownSource', *args)
 
-    def info(self, source, *args):
+    def info(self, source, *args) -> None:
         assert self.logger
         self._call_with_args(self.logger.info, source.__class__.__name__ if source else 'UnknownSource', *args)
 
-    def warn(self, source, *args):
+    def warn(self, source, *args) -> None:
         assert self.logger
         self._call_with_args(self.logger.warning, source.__class__.__name__ if source else 'UnknownSource', *args)
 
-    def err(self, source, *args):
+    def err(self, source, *args) -> None:
         assert self.logger
         self._call_with_args(self.logger.error, source.__class__.__name__ if source else 'UnknownSource', *args)
+
+    def welcome(self) -> None:
+        assert self.logger
+        self.logger.info(self._welcome_log_message)

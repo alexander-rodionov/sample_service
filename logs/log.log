@@ -1,0 +1,106 @@
+2024-06-17 13:54:44,470 	 main_logger 	 INFO 	 
+--------------------------------------------------------------------------------
+Starting currency converter service with config:
+logger = {'loglevel': 'INFO', 'rotating_size_bytes': 1000000, 'backup_count': 5, 'workfolder': './logs'}
+data_provider = {'cache_ttl': 3600, 'dump_file': './cache/cross_rates.json'}
+http = {'host': '0.0.0.0', 'port': 8080}
+--------------------------------------------------------------------------------
+2024-06-17 13:54:44,470 	 main_logger 	 INFO 	 LoggerModule Logger started
+2024-06-17 13:54:44,471 	 main_logger 	 INFO 	 CachedDataLoader Loading cache from ./cache/cross_rates.json
+2024-06-17 13:54:44,471 	 main_logger 	 INFO 	 HttpServerModule Starting HTTP server
+2024-06-17 13:54:44,471 	 main_logger 	 INFO 	 HttpServerModule HTTP server started
+2024-06-17 13:55:40,138 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates?from=USD&to=RUB&value=1
+2024-06-17 13:55:40,141 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates?from=XYZ&to=RUB&value=1
+2024-06-17 13:55:40,141 	 main_logger 	 ERROR 	 ServiceExchangeModule Error calling convert: Cannot convert XYZ to RUB
+2024-06-17 13:55:40,142 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates?from=USD&to=XYZ&value=1
+2024-06-17 13:55:40,142 	 main_logger 	 ERROR 	 ServiceExchangeModule Error calling convert: Cannot convert USD to XYZ
+2024-06-17 13:56:15,743 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/heartbeat: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/heartbeat?
+2024-06-17 13:56:15,745 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates/list: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates/list?
+2024-06-17 13:56:15,746 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates?from=USD&to=RUB&value=1
+2024-06-17 13:56:15,748 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates?from=XYZ&to=RUB&value=1
+2024-06-17 13:56:15,748 	 main_logger 	 ERROR 	 ServiceExchangeModule Error calling convert: Cannot convert XYZ to RUB
+2024-06-17 13:56:15,749 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates?from=USD&to=XYZ&value=1
+2024-06-17 13:56:15,749 	 main_logger 	 ERROR 	 ServiceExchangeModule Error calling convert: Cannot convert USD to XYZ
+2024-06-17 13:56:53,855 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/heartbeat: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/heartbeat?
+2024-06-17 13:56:53,857 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates/list: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates/list?
+2024-06-17 13:56:53,858 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates?from=USD&to=RUB&value=1
+2024-06-17 13:56:53,860 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates?from=XYZ&to=RUB&value=1
+2024-06-17 13:56:53,860 	 main_logger 	 ERROR 	 ServiceExchangeModule Error calling convert: Cannot convert XYZ to RUB
+2024-06-17 13:56:53,861 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates?from=USD&to=XYZ&value=1
+2024-06-17 13:56:53,862 	 main_logger 	 ERROR 	 ServiceExchangeModule Error calling convert: Cannot convert USD to XYZ
+2024-06-17 13:57:25,894 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/heartbeat: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/heartbeat?
+2024-06-17 13:57:25,896 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates/list: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates/list?
+2024-06-17 13:57:25,898 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates?from=USD&to=RUB&value=1
+2024-06-17 13:57:25,900 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates?from=XYZ&to=RUB&value=1
+2024-06-17 13:57:25,900 	 main_logger 	 ERROR 	 ServiceExchangeModule Error calling convert: Cannot convert XYZ to RUB
+2024-06-17 13:57:25,901 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates?from=USD&to=XYZ&value=1
+2024-06-17 13:57:25,901 	 main_logger 	 ERROR 	 ServiceExchangeModule Error calling convert: Cannot convert USD to XYZ
+2024-06-17 13:58:11,259 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/heartbeat: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/heartbeat?
+2024-06-17 13:58:11,260 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates/list: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates/list?
+2024-06-17 13:58:11,262 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates?from=USD&to=RUB&value=1
+2024-06-17 13:58:11,264 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates?from=XYZ&to=RUB&value=1
+2024-06-17 13:58:11,264 	 main_logger 	 ERROR 	 ServiceExchangeModule Error calling convert: Cannot convert XYZ to RUB
+2024-06-17 13:58:11,265 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates?from=USD&to=XYZ&value=1
+2024-06-17 13:58:11,265 	 main_logger 	 ERROR 	 ServiceExchangeModule Error calling convert: Cannot convert USD to XYZ
+2024-06-17 14:08:40,555 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/heartbeat: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/heartbeat?
+2024-06-17 14:08:40,557 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates/list: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates/list?
+2024-06-17 14:08:40,558 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates?from=USD&to=RUB&value=1
+2024-06-17 14:08:40,560 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates?from=XYZ&to=RUB&value=1
+2024-06-17 14:08:40,561 	 main_logger 	 ERROR 	 ServiceExchangeModule Error calling convert: Cannot convert XYZ to RUB
+2024-06-17 14:08:40,562 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates?from=USD&to=XYZ&value=1
+2024-06-17 14:08:40,562 	 main_logger 	 ERROR 	 ServiceExchangeModule Error calling convert: Cannot convert USD to XYZ
+2024-06-17 14:12:04,342 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/heartbeat: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/heartbeat?
+2024-06-17 14:12:04,344 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates/list: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates/list?
+2024-06-17 14:12:04,346 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates?from=USD&to=RUB&value=1
+2024-06-17 14:12:04,347 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates?from=XYZ&to=RUB&value=1
+2024-06-17 14:12:04,348 	 main_logger 	 ERROR 	 ServiceExchangeModule Error calling convert: Cannot convert XYZ to RUB
+2024-06-17 14:12:04,349 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates?from=USD&to=XYZ&value=1
+2024-06-17 14:12:04,349 	 main_logger 	 ERROR 	 ServiceExchangeModule Error calling convert: Cannot convert USD to XYZ
+2024-06-17 14:14:53,962 	 main_logger 	 INFO 	 HttpServerModule Stopping HTTP server
+2024-06-17 14:14:53,962 	 main_logger 	 INFO 	 DataProviderModule Data provider stopped
+2024-06-17 14:14:53,962 	 main_logger 	 INFO 	 LoggerModule Logger stopped
+2024-06-17 14:15:37,193 	 main_logger 	 INFO 	 
+--------------------------------------------------------------------------------
+Starting currency converter service with config:
+logger = {'loglevel': 'INFO', 'rotating_size_bytes': 1000000, 'backup_count': 5, 'workfolder': './logs'}
+data_provider = {'cache_ttl': 3600, 'dump_file': './cache/cross_rates.json'}
+http = {'host': '0.0.0.0', 'port': 8080}
+--------------------------------------------------------------------------------
+2024-06-17 14:15:37,194 	 main_logger 	 INFO 	 LoggerModule Logger started
+2024-06-17 14:15:37,194 	 main_logger 	 INFO 	 CachedDataLoader Loading cache from ./cache/cross_rates.json
+2024-06-17 14:15:37,196 	 main_logger 	 INFO 	 HttpServerModule Starting HTTP server
+2024-06-17 14:29:49,168 	 main_logger 	 INFO 	 
+--------------------------------------------------------------------------------
+Starting currency converter service with config:
+logger = {'loglevel': 'INFO', 'rotating_size_bytes': 1000000, 'backup_count': 5, 'workfolder': './logs'}
+data_provider = {'cache_ttl': 3600, 'dump_file': './cache/cross_rates.json'}
+http = {'host': '0.0.0.0', 'port': 8080}
+--------------------------------------------------------------------------------
+2024-06-17 14:29:49,168 	 main_logger 	 INFO 	 LoggerModule Logger started
+2024-06-17 14:29:49,168 	 main_logger 	 INFO 	 CachedDataLoader Loading cache from ./cache/cross_rates.json
+2024-06-17 14:29:49,169 	 main_logger 	 INFO 	 HttpServerModule Starting HTTP server
+2024-06-17 14:29:49,169 	 main_logger 	 INFO 	 HttpServerModule HTTP server started
+2024-06-17 14:29:54,145 	 main_logger 	 INFO 	 HttpServerModule Stopping HTTP server
+2024-06-17 14:29:54,145 	 main_logger 	 INFO 	 DataProviderModule Data provider stopped
+2024-06-17 14:29:54,146 	 main_logger 	 INFO 	 LoggerModule Logger stopped
+2024-06-17 14:30:22,505 	 main_logger 	 INFO 	 
+--------------------------------------------------------------------------------
+Starting currency converter service with config:
+logger = {'loglevel': 'INFO', 'rotating_size_bytes': 1000000, 'backup_count': 5, 'workfolder': './logs'}
+data_provider = {'cache_ttl': 3600, 'dump_file': './cache/cross_rates.json'}
+http = {'host': '0.0.0.0', 'port': 8080}
+--------------------------------------------------------------------------------
+2024-06-17 14:30:22,505 	 main_logger 	 INFO 	 LoggerModule Logger started
+2024-06-17 14:30:22,505 	 main_logger 	 INFO 	 CachedDataLoader Loading cache from ./cache/cross_rates.json
+2024-06-17 14:30:22,505 	 main_logger 	 INFO 	 HttpServerModule Starting HTTP server
+2024-06-17 14:30:22,506 	 main_logger 	 INFO 	 HttpServerModule HTTP server started
+2024-06-17 14:30:25,859 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/heartbeat: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/heartbeat?
+2024-06-17 14:30:25,861 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates/list: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates/list?
+2024-06-17 14:30:25,863 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates?from=USD&to=RUB&value=1
+2024-06-17 14:30:25,864 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates?from=XYZ&to=RUB&value=1
+2024-06-17 14:30:25,865 	 main_logger 	 ERROR 	 ServiceExchangeModule Error calling convert: Cannot convert XYZ to RUB
+2024-06-17 14:30:25,865 	 main_logger 	 INFO 	 CurrencyAPI Request to /api/rates: 127.0.0.1 - python-requests/2.32.3 - [GET] /api/rates?from=USD&to=XYZ&value=1
+2024-06-17 14:30:25,866 	 main_logger 	 ERROR 	 ServiceExchangeModule Error calling convert: Cannot convert USD to XYZ
+2024-06-17 14:30:29,416 	 main_logger 	 INFO 	 HttpServerModule Stopping HTTP server
+2024-06-17 14:30:29,417 	 main_logger 	 INFO 	 DataProviderModule Data provider stopped
+2024-06-17 14:30:29,417 	 main_logger 	 INFO 	 LoggerModule Logger stopped
