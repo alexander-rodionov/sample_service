@@ -14,7 +14,6 @@ DEFAULT_CURRENCY_METHOD = '/v1/latest'
 DEFAULT_CASH_TTL = 60  # sec
 DEFAULT_CACHE_DUMP_FILE = './cache/cross_rates.json'
 
-
 @dataclass
 class DataResult:
     data: Optional[Dict[str, Dict[str, float]]]
