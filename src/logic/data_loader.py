@@ -9,7 +9,6 @@ from ..abc import LoggerABC
 from ..misc import LazyValue
 
 from aiohttp import TCPConnector, ClientSession
-KEY = 'fca_live_9FJkTt5xA3imhC8GpAhKP7GYbeN34IyqsRDMg8Gs'
 DEFAULT_CURRENCY_API_URL = 'https://api.freecurrencyapi.com'
 DEFAULT_CURRENCY_METHOD = '/v1/latest'
 DEFAULT_CASH_TTL = 60  # sec
