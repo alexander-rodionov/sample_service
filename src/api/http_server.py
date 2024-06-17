@@ -7,8 +7,10 @@ from .api_handler import ApiHandlerABC
 
 LONG_SLEEP_TIME = 3600
 
+
 class HttpServerModule(ModuleABC):
-    def __init__(self, exchange: ServiceExchangeABC, log: LoggerABC, handler_types: List[Type[ApiHandlerABC]], host, port):
+    def __init__(self, exchange: ServiceExchangeABC, log: LoggerABC, handler_types: List[Type[ApiHandlerABC]], host,
+                 port):
         self.exchange = exchange
         self.log = log
         self.app: Optional[Application] = None
@@ -17,7 +19,6 @@ class HttpServerModule(ModuleABC):
         self.port = port
         self.handler_types = handler_types
         self.handlers = None
-
 
     async def start(self):
         self.log.info(self, 'Starting HTTP server')
@@ -36,4 +37,3 @@ class HttpServerModule(ModuleABC):
 
         while True:
             await sleep(LONG_SLEEP_TIME)
-

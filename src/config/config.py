@@ -5,9 +5,9 @@ from yaml import safe_load
 from .. import ModuleABC
 from ..misc import LazyValue
 
-
 DEFAULT_CONFIG_PATH = './config/config.yaml'
 DEFAULT_SECRET_PATH = './config/secret.yaml'
+
 
 class ConfigModule(ModuleABC):
     def __init__(self, config_file: str = DEFAULT_CONFIG_PATH, secret_file: str = DEFAULT_SECRET_PATH):
@@ -23,13 +23,11 @@ class ConfigModule(ModuleABC):
     def _make_config_string_dump(self):
         if self.config:
             self.config_string_dump = '\n'.join([f'{k} = {v}' for k, v in self.config.items()])
+
     @classmethod
     def _deep_update(cls, d, u):
         for k, v in u.items():
-            if isinstance(v, dict):
-                d[k] = cls._deep_update(d.get(k, {}), v)
-            else:
-                d[k] = v
+            d[k] = cls._deep_update(d.get(k, {}), v) if isinstance(v, dict) else v
         return d
 
     async def start(self):
@@ -46,7 +44,7 @@ class ConfigModule(ModuleABC):
     def stop(self):
         ...
 
-    def __getitem__(self, item : str):
+    def __getitem__(self, item: str):
         assert self.config
         val = self.config
         try:
@@ -60,5 +58,3 @@ class ConfigModule(ModuleABC):
 
     async def run(self):
         ...
-
-

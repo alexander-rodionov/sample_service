@@ -9,10 +9,12 @@ from ..abc import LoggerABC
 from ..misc import LazyValue
 
 from aiohttp import TCPConnector, ClientSession
+
 DEFAULT_CURRENCY_API_URL = 'https://api.freecurrencyapi.com'
 DEFAULT_CURRENCY_METHOD = '/v1/latest'
 DEFAULT_CASH_TTL = 60  # sec
 DEFAULT_CACHE_DUMP_FILE = './cache/cross_rates.json'
+
 
 @dataclass
 class DataResult:
@@ -67,8 +69,8 @@ class DataLoader:
 
 class CachedDataLoader(DataLoader):
     def __init__(self, api_key: LazyValue, log: LoggerABC,
-                 cache_ttl = LazyValue(DEFAULT_CASH_TTL),
-                 dump_file = LazyValue(DEFAULT_CACHE_DUMP_FILE)):
+                 cache_ttl=LazyValue(DEFAULT_CASH_TTL),
+                 dump_file=LazyValue(DEFAULT_CACHE_DUMP_FILE)):
         DataLoader.__init__(self, api_key(), log)
         self.data: Optional[DataResult] = None
         self.cache_ttl = cache_ttl
@@ -109,4 +111,3 @@ class CachedDataLoader(DataLoader):
             self.data = await super().get_data()
             self._dump_cache()
             return self.data
-

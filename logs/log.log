@@ -104,3 +104,45 @@ http = {'host': '0.0.0.0', 'port': 8080}
 2024-06-17 14:30:29,416 	 main_logger 	 INFO 	 HttpServerModule Stopping HTTP server
 2024-06-17 14:30:29,417 	 main_logger 	 INFO 	 DataProviderModule Data provider stopped
 2024-06-17 14:30:29,417 	 main_logger 	 INFO 	 LoggerModule Logger stopped
+2024-06-17 16:17:10,836 	 main_logger 	 INFO 	 
+--------------------------------------------------------------------------------
+Starting currency converter service with config:
+logger = {'loglevel': 'INFO', 'rotating_size_bytes': 1000000, 'backup_count': 5, 'workfolder': './logs'}
+data_provider = {'cache_ttl': 3600, 'dump_file': './cache/cross_rates.json'}
+http = {'host': '0.0.0.0', 'port': 8080}
+--------------------------------------------------------------------------------
+2024-06-17 16:17:10,836 	 main_logger 	 INFO 	 LoggerModule Logger started
+2024-06-17 16:17:59,386 	 main_logger 	 INFO 	 
+--------------------------------------------------------------------------------
+Starting currency converter service with config:
+logger = {'loglevel': 'INFO', 'rotating_size_bytes': 1000000, 'backup_count': 5, 'workfolder': './logs'}
+data_provider = {'cache_ttl': 3600, 'dump_file': './cache/cross_rates.json'}
+http = {'host': '0.0.0.0', 'port': 8080}
+--------------------------------------------------------------------------------
+2024-06-17 16:17:59,386 	 main_logger 	 INFO 	 LoggerModule Logger started
+2024-06-17 16:17:59,386 	 main_logger 	 INFO 	 CachedDataLoader Loading cache from ./cache/cross_rates.json
+2024-06-17 16:17:59,386 	 main_logger 	 INFO 	 HttpServerModule Starting HTTP server
+2024-06-17 16:19:34,657 	 main_logger 	 INFO 	 
+--------------------------------------------------------------------------------
+Starting currency converter service with config:
+logger = {'loglevel': 'INFO', 'rotating_size_bytes': 1000000, 'backup_count': 5, 'workfolder': './logs'}
+data_provider = {'cache_ttl': 3600, 'dump_file': './cache/cross_rates.json'}
+http = {'host': '0.0.0.0', 'port': 8080}
+--------------------------------------------------------------------------------
+2024-06-17 16:19:34,657 	 main_logger 	 INFO 	 LoggerModule Logger started
+2024-06-17 16:19:34,657 	 main_logger 	 INFO 	 CachedDataLoader Loading cache from ./cache/cross_rates.json
+2024-06-17 16:19:34,657 	 main_logger 	 INFO 	 HttpServerModule Starting HTTP server
+2024-06-17 16:19:38,784 	 main_logger 	 INFO 	 HttpServerModule Stopping HTTP server
+2024-06-17 16:19:38,784 	 main_logger 	 INFO 	 DataProviderModule Data provider stopped
+2024-06-17 16:19:38,784 	 main_logger 	 INFO 	 LoggerModule Logger stopped
+2024-06-17 16:19:49,121 	 main_logger 	 INFO 	 
+--------------------------------------------------------------------------------
+Starting currency converter service with config:
+logger = {'loglevel': 'INFO', 'rotating_size_bytes': 1000000, 'backup_count': 5, 'workfolder': './logs'}
+data_provider = {'cache_ttl': 3600, 'dump_file': './cache/cross_rates.json'}
+http = {'host': '0.0.0.0', 'port': 8080}
+--------------------------------------------------------------------------------
+2024-06-17 16:19:49,121 	 main_logger 	 INFO 	 LoggerModule Logger started
+2024-06-17 16:19:49,121 	 main_logger 	 INFO 	 CachedDataLoader Loading cache from ./cache/cross_rates.json
+2024-06-17 16:19:49,121 	 main_logger 	 INFO 	 HttpServerModule Starting HTTP server
+2024-06-17 16:19:49,121 	 main_logger 	 INFO 	 HttpServerModule HTTP server started

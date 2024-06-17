@@ -23,19 +23,21 @@ from ..abc import DataProviderIncorrectKey
 
 _API_PREFIX = '/api'
 
+
 class RateSchema(Schema):
     from_currency = fields.String(data_key='from', required=True,
-        validate = [
-            Length(equal=3, error="from must be exactly 3 characters long"),
-            Regexp(regex=r"^[A-Z]{3}$", error="from must consist of uppercase letters A-Z only")
-        ]
-    )
-    to_currency = fields.String(data_key='to',required=True,
-        validate = [
-            Length(equal=3, error="to must be exactly 3 characters long"),
-            Regexp(regex=r"^[A-Z]{3}$", error="to must consist of uppercase letters A-Z only")
-        ]
-)
+                                  validate=[
+                                      Length(equal=3, error="from must be exactly 3 characters long"),
+                                      Regexp(regex=r"^[A-Z]{3}$",
+                                             error="from must consist of uppercase letters A-Z only")
+                                  ]
+                                  )
+    to_currency = fields.String(data_key='to', required=True,
+                                validate=[
+                                    Length(equal=3, error="to must be exactly 3 characters long"),
+                                    Regexp(regex=r"^[A-Z]{3}$", error="to must consist of uppercase letters A-Z only")
+                                ]
+                                )
     value = fields.Float(required=True, validate=validate.Range(min=0))
 
 
@@ -63,8 +65,6 @@ class CurrencyAPI(ApiHandlerABC):
         result = await self.exchange.call('get_list', [])
         return json_response(dict(result=result))
 
-
     @ApiHandlerABC.api(APIMethods.GET, f'{_API_PREFIX}/heartbeat')
     async def get_heartbeat(self, request):
         return json_response({})
-

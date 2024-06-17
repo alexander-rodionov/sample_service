@@ -27,6 +27,7 @@ class Launcher:
     async def _run_inner(self):
         service_stopped = False
         root_task = current_task()
+
         async def shutdown_task():
             nonlocal service_stopped
             for t in all_tasks():
@@ -63,7 +64,6 @@ class Launcher:
             pass
         self.loop.stop()
         print('Loop stopped')
-
 
     def run(self):
         self.root_task = self.loop.run_until_complete(self._run_inner())

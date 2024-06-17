@@ -8,6 +8,7 @@ from asyncio.exceptions import TimeoutError as AsyncTimeoutError
 
 EXCHANGE_CALL_TIMEOUT = 6000  # sec
 
+
 class ServiceExchangeABC(ABC):
     @abstractmethod
     async def call(self, target: str, data: Union[Dict, List]):
@@ -24,13 +25,14 @@ class QueueMessage:
     target: str
     data: Union[Dict, List]
 
+
 class ServiceExchangeModule(ServiceExchangeABC, ModuleABC):
     def __init__(self, log: LoggerABC):
         ServiceExchangeABC.__init__(self)
-        self.request_queue:Queue = Queue()
+        self.request_queue: Queue = Queue()
         self.results: Dict[str, Any] = {}
         self.events: Dict[str, Event] = {}
-        self.clients:Dict[str, Callable] = {}
+        self.clients: Dict[str, Callable] = {}
         self.log = log
 
     async def call(self, target: str, data: Union[Dict, List]):
@@ -72,7 +74,8 @@ class ServiceExchangeModule(ServiceExchangeABC, ModuleABC):
                     self.events[msg.id].set()
             else:
                 self.log.warn(self, f'Client {msg.target} not found, throwing message away')
-            self.log.debug(self, f'events_len: {len(self.events)}, results_len: {len(self.results)}, queue_len: {self.request_queue.qsize()}')
+            self.log.debug(self,
+                           f'events_len: {len(self.events)}, results_len: {len(self.results)}, queue_len: {self.request_queue.qsize()}')
 
     async def start(self):
         ...

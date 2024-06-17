@@ -5,11 +5,13 @@ from typing import TYPE_CHECKING
 from aiohttp.web import get, post, put, delete, Application, RouteDef
 from ..abc import ServiceExchangeABC
 
+
 class APIMethods:
     GET = 'GET'
     POST = 'POST'
     PUT = 'PUT'
     DELETE = 'DELETE'
+
 
 _route_functions = {
     APIMethods.GET: get,
@@ -17,6 +19,8 @@ _route_functions = {
     APIMethods.PUT: put,
     APIMethods.DELETE: delete
 }
+
+
 class ApiHandlerABC(ABC):
 
     def __init__(self, app: Application, exchange: ServiceExchangeABC, server):
@@ -38,8 +42,10 @@ class ApiHandlerABC(ABC):
             def wrapper(self, request, *args, **kwargs):
                 self.server.log.info(self, f'Request to {path}: {self.request_to_log(request)}')
                 return func(self, request, *args, **kwargs)
+
             setattr(wrapper, 'api_def', (method_type, path))
             return wrapper
+
         return decorator
 
     def request_to_log(self, request):
@@ -50,4 +56,3 @@ class ApiHandlerABC(ABC):
         query_string = request.query_string
 
         return f"{ip_address} - {user_agent} - [{method}] {path}?{query_string}"
-
